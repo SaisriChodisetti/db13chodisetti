@@ -1,7 +1,7 @@
 const mongoose = require("mongoose") 
 const plantSchema = mongoose.Schema({ 
  type: String, 
- name: String, 
+ name: String,
  cost: Number 
 }) 
  

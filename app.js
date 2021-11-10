@@ -62,7 +62,7 @@ async function recreateDB(){
                  {"type":"Palm", "name":'Chestnut',"cost":15}]
  
  for(i in results){
-   let instance = new  lo({type: results[i]["type"], name: results[i]["name"], cost:results[i]["cost"]});
+   let instance = new Plant({type: results[i]["type"], name: results[i]["name"], cost:results[i]["cost"]});
    instance.save( function(err,doc) {
      if(err) return console.error(err);
      console.log("object added.")
