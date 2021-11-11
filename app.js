@@ -54,9 +54,8 @@ mongoose.connect(connectionString, {useNewUrlParser: true, useUnifiedTopology: t
 
 async function recreateDB(){
   // Delete everything
-  //await Plant.deleteMany();
- 
- 
+  await Plant.deleteMany();
+  
   var results = [{"type":"Palm","name":'Caranday',"cost":30},
                  {"type":"Aquatic","name":'Water Hawthorn',"cost":25},
                  {"type":"Palm", "name":'Chestnut',"cost":15}]
