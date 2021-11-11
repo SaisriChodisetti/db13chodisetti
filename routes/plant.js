@@ -3,5 +3,5 @@ const plant_controlers = require('../controllers/plant');
 var router = express.Router();
 
 /* GET costumes */
-router.get('/', plant_controlers.plant_view_all_Page);
+router.get('plant/:id', plant_controlers.plant_detail);
 module.exports = router;
