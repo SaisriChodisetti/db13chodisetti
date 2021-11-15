@@ -11,7 +11,7 @@ router.get('/', api_controller.api);
 // POST request for creating a plant.
 router.post('/plant', plant_controller.plant_create_post);
 // DELETE request to delete plant.
-router.delete('/plantss/:id', plant_controller.plant_delete);
+router.delete('/plant/:id', plant_controller.plant_delete);
 // PUT request to update plant.
 router.put('/plant/:id', plant_controller.plant_update_put);
 // GET request for one plant.

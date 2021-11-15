@@ -60,9 +60,18 @@ exports.plant_detail = async function(req, res) {
 }; 
 
 // Handle nameume delete form on DELETE.
-exports.plant_delete = function (req, res) {
-    res.send('NOT IMPLEMENTED: Plant delete DELETE ' + req.params.id);
-};
+exports.plant_delete = async function(req, res) { 
+    console.log("delete "  + req.params.id) 
+    try { 
+        result = await plants.findByIdAndDelete( req.params.id) 
+        console.log("Removed " + result) 
+        res.send(result) 
+    } catch (err) { 
+        res.status(500) 
+        res.send(`{"error": Error deleting ${err}}`); 
+    } 
+}; 
+
 // Handle nameume update form on PUT.
 exports.plant_update_put = async function(req, res) { 
     console.log(`update on id ${req.params.id} with body 
