@@ -92,3 +92,17 @@ ${JSON.stringify(req.body)}`)
 failed`); 
     } 
 };
+
+// Handle a show one view with id specified by query 
+exports.plant_view_one_Page = async function(req, res) {
+    console.log("single view for id " + req.query.id)
+    try{
+    result = await plants.findById( req.query.id)
+    res.render('plantdetail',
+   { title: 'Plant Detail', toShow: result });
+    }
+    catch(err){
+    res.status(500)
+    res.send(`{'error': '${err}'}`);
+    }
+   };

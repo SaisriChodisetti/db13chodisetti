@@ -1,0 +1,20 @@
+extends layout
+block content
+ h1= title
+ - let plantid = toShow._id
+ - let plant_type = toShow.type
+ - let plantname = toShow.name
+ - let plantcost = toShow.cost
+ div
+    div.row
+      div(class='plantAttr mr-3') Plant Id is:
+      div #{plantid}
+    div.row
+      div(class='plantAttr mr-3') Plant Type is:
+      div #{plant_type}
+    div.row
+      div(class='plantAttr mr-3') Plant Name is:
+      div #{plantname}
+    div.row
+      div(class='plantAttr mr-3') Plant Cost is:
+      div #{plantcost}

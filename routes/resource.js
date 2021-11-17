@@ -4,6 +4,7 @@ var router = express.Router();
 // Require controller modules
 var api_controller = require('../controllers/api');
 var plant_controller = require('../controllers/plant');
+
 /// API ROUTE ///
 // GET resources base.
 router.get('/', api_controller.api);
@@ -19,5 +20,8 @@ router.get('/plant/:id', plant_controller.plant_detail);
 // GET request for list of all plant items.
 router.get('/plant', plant_controller.plant_list);
 /* GET detail plant page */
+
+/* GET detail plant page */ 
+router.get('/detail', plant_controller.plant_view_one_Page); 
 
 module.exports = router;
