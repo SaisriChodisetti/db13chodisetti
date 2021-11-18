@@ -38,7 +38,7 @@ exports.plant_create_post = async function (req, res) {
 
 // VIEWS
 // Handle a show all view
-exports.plant_view_all_Page = async function(req, res) {
+exports.plant_view_all_Page = async function (req, res) {
     try {
         thePlants = await plants.find();
         res.render('plant', { title: 'Plant Search Results', results: thePlants });
@@ -48,110 +48,99 @@ exports.plant_view_all_Page = async function(req, res) {
     }
 };
 
-exports.plant_detail = async function(req, res) { 
-    console.log("detail"  + req.params.id) 
-    try { 
-        result = await plants.findById(req.params.id) 
-        res.send(result) 
-    } catch (error) { 
-        res.status(500) 
-        res.send(`{"error": document for id ${req.params.id} not found`); 
-    } 
-}; 
+exports.plant_detail = async function (req, res) {
+    console.log("detail" + req.params.id)
+    try {
+        result = await plants.findById(req.params.id)
+        res.send(result)
+    } catch (error) {
+        res.status(500)
+        res.send(`{"error": document for id ${req.params.id} not found`);
+    }
+};
 
 // Handle nameume delete form on DELETE.
-exports.plant_delete = async function(req, res) { 
-    console.log("delete "  + req.params.id) 
-    try { 
-        result = await plants.findByIdAndDelete( req.params.id) 
-        console.log("Removed " + result) 
-        res.send(result) 
-    } catch (err) { 
-        res.status(500) 
-        res.send(`{"error": Error deleting ${err}}`); 
-    } 
-}; 
+exports.plant_delete = async function (req, res) {
+    console.log("delete " + req.params.id)
+    try {
+        result = await plants.findByIdAndDelete(req.params.id)
+        console.log("Removed " + result)
+        res.send(result)
+    } catch (err) {
+        res.status(500)
+        res.send(`{"error": Error deleting ${err}}`);
+    }
+};
 
 // Handle nameume update form on PUT.
-exports.plant_update_put = async function(req, res) { 
+exports.plant_update_put = async function (req, res) {
     console.log(`update on id ${req.params.id} with body 
-${JSON.stringify(req.body)}`) 
-    try { 
-        let toUpdate = await plants.findById( req.params.id) 
+${JSON.stringify(req.body)}`)
+    try {
+        let toUpdate = await plants.findById(req.params.id)
         // Do updates of properties 
-        if(req.body.name)  
-               toUpdate.name = req.body.name; 
-        if(req.body.type) toUpdate.type = req.body.type; 
-        if(req.body.cost) toUpdate.cost = req.body.cost; 
-        let result = await toUpdate.save(); 
-        console.log("Sucess " + result) 
-        res.send(result) 
-    } catch (err) { 
-        res.status(500) 
+        if (req.body.name)
+            toUpdate.name = req.body.name;
+        if (req.body.type) toUpdate.type = req.body.type;
+        if (req.body.cost) toUpdate.cost = req.body.cost;
+        let result = await toUpdate.save();
+        console.log("Sucess " + result)
+        res.send(result)
+    } catch (err) {
+        res.status(500)
         res.send(`{"error": ${err}: Update for id ${req.params.id} 
-failed`); 
-    } 
+failed`);
+    }
 };
 
 // Handle a show one view with id specified by query 
-exports.plant_view_one_Page = async function(req, res) {
+exports.plant_view_one_Page = async function (req, res) {
     console.log("single view for id " + req.query.id)
-    try{
-    result = await plants.findById( req.query.id)
-    res.render('plantdetail',
-   { title: 'Plant Detail', toShow: result });
+    try {
+        result = await plants.findById(req.query.id)
+        res.render('plantdetail',
+            { title: 'Plant Detail', toShow: result });
     }
-    catch(err){
-    res.status(500)
-    res.send(`{'error': '${err}'}`);
+    catch (err) {
+        res.status(500)
+        res.send(`{'error': '${err}'}`);
     }
-   };
-
-exports.plant_create_Page = function(req, res) {
- console.log("create view")
- try{
- res.render('plantcreate', { title: 'Plant Create'});
- }
- catch(err){
- res.status(500)
- res.send(`{'error': '${err}'}`);
- }
 };
 
-exports.plant_update_Page = async function(req, res) {
-    console.log("update view for item "+req.query.id)
-    try{
-    let result = await plants.findById(req.query.id)
-    res.render('plantupdate', { title: 'Plant Update', toShow: result });
+exports.plant_create_Page = function (req, res) {
+    console.log("create view")
+    try {
+        res.render('plantcreate', { title: 'Plant Create' });
     }
-    catch(err){
-    res.status(500)
-    res.send(`{'error': '${err}'}`);
+    catch (err) {
+        res.status(500)
+        res.send(`{'error': '${err}'}`);
     }
-   };
-
-exports.costume_delete_Page = async function(req, res) {
- console.log("Delete view for id " + req.query.id)
- try{
- result = await Costume.findById(req.query.id)
- res.render('costumedelete', { title: 'Costume Delete', toShow:
-result });
- }
- catch(err){
- res.status(500)
- res.send(`{'error': '${err}'}`);
- }
 };
 
-exports.plant_delete_Page = async function(req, res) {
+exports.plant_update_Page = async function (req, res) {
+    console.log("update view for item " + req.query.id)
+    try {
+        let result = await plants.findById(req.query.id)
+        res.render('plantupdate', { title: 'Plant Update', toShow: result });
+    }
+    catch (err) {
+        res.status(500)
+        res.send(`{'error': '${err}'}`);
+    }
+};
+
+exports.plant_delete_Page = async function (req, res) {
     console.log("Delete view for id " + req.query.id)
-    try{
-    result = await plants.findById(req.query.id)
-    res.render('plantdelete', { title: 'Plant Delete', toShow:
-   result });
+    try {
+        result = await plants.findById(req.query.id)
+        res.render('plantdelete', {
+            title: 'Plant Delete', toShow:
+                result
+        });
     }
-    catch(err){
-    res.status(500)
-    res.send(`{'error': '${err}'}`);
+    catch (err) {
+        res.status(500)
+        res.send(`{'error': '${err}'}`);
     }
-   };
+};
