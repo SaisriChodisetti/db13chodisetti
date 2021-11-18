@@ -26,4 +26,6 @@ router.get('/detail', plant_controller.plant_view_one_Page);
 
 router.get('/create', plant_controller.plant_create_Page);
 
+router.get('/update', plant_controller.plant_update_Page);
+
 module.exports = router;
