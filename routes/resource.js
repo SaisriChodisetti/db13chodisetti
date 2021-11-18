@@ -28,4 +28,6 @@ router.get('/create', plant_controller.plant_create_Page);
 
 router.get('/update', plant_controller.plant_update_Page);
 
+router.get('/delete', plant_controller.plant_delete_Page);
+
 module.exports = router;
