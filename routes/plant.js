@@ -13,5 +13,6 @@ const secured = (req, res, next) => {
     res.redirect("/login"); 
   }
 router.get('/update', secured, plant_controller.plant_update_Page);
+router.get('/create',secured,plant_controller.plant_create_Page);
 
 module.exports = router;
